@@ -17,6 +17,13 @@ llm2 = ChatGoogleGenerativeAI(
     google_api_key=os.getenv("GOOGLE_API_KEY")
 )
 
-result = llm2.invoke("What is the capital of France?")
+llm3 = ChatOpenAI(
+    model="deepseek/deepseek-chat",
+    openai_api_key=os.getenv("OPENROUTER_API_KEY"),
+    openai_api_base="https://openrouter.ai/api/v1",
+    temperature=0.7,
+)
+
+result = llm3.invoke("What is the capital of France?")
 
 print(result.content)
