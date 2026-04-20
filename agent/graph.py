@@ -1,5 +1,4 @@
-1
-from langchain.graph import StateGraph, START,END
+from langgraph.graph import StateGraph, START,END
 from langgraph.checkpoint.memory import MemorySaver
 from agent.state import AgentState
 from agent.nodes.input_collector import input_collector_node
@@ -27,7 +26,7 @@ def build_graph():
 
 
     graph.add_edge(START, "profile_structurer")
-    graph.add_conditional_edge("profile_structurer", route_after_profile,{
+    graph.add_conditional_edges("profile_structurer", route_after_profile,{
         "collect": "input_collector",
         "proceed": "metrics_calculator"
     }

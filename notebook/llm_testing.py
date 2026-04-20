@@ -6,7 +6,7 @@ import os
 load_dotenv()
 
 llm1 = ChatOpenAI(
-    model="openai/gpt-4o-mini",
+    model="deepseek/deepseek-chat",
     openai_api_key=os.getenv("OPENROUTER_API_KEY"),
     openai_api_base="https://openrouter.ai/api/v1",
     temperature=0.7,

@@ -1,4 +1,5 @@
-from langchain_google_genai import ChatGoogleGenerativeAI
+# from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from agent.state import AgentState
 from agent.prompts import QUERY_BUILDER_PROMPT
@@ -8,9 +9,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-llm = ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash",
-    google_api_key=os.getenv("GOOGLE_API_KEY")
+llm = ChatOpenAI(
+    model="deepseek/deepseek-chat",
+    openai_api_key=os.getenv("OPENROUTER_API_KEY"),
+    openai_api_base="https://openrouter.ai/api/v1",
+    temperature=0.7,
 )
 
 def query_builder_node(state: AgentState) -> AgentState:
