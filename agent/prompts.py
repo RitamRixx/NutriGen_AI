@@ -66,7 +66,7 @@ Output ONLY a single search query string. Nothing else.
 """
 
 DIET_GENERATION_PROMPT = """
-You are a certified nutritionist creating a personalized 7-day Indian diet plan.
+You are a certified nutritionist creating a personalized 7-day Indian veg and non-veg diet plan.
 
 STRICTLY follow the user profile, calorie needs, and retrieved context below.
 
