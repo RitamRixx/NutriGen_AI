@@ -33,7 +33,7 @@ NutriGen AI is an end-to-end conversational nutrition planning system. A user de
 | Layer | Technology |
 |---|---|
 | Agent Orchestration | LangGraph (StateGraph with MemorySaver checkpointing) |
-| LLM | DeepSeek Chat via OpenRouter API |
+| LLM | Gemini 2.5 flash |
 | Embeddings | `sentence-transformers/multi-qa-MiniLM-L6-cos-v1` (HuggingFace) |
 | Vector Store | ChromaDB (MMR retrieval, cosine similarity) |
 | Data Ingestion | LangChain PDF Loader + YouTube Transcript API |
@@ -118,7 +118,7 @@ START
 ### Prerequisites
 
 - Python 3.10+
-- An [OpenRouter](https://openrouter.ai) API key (for DeepSeek Chat)
+- Gemini 2.5 flash/An [OpenRouter](https://openrouter.ai) API key (for DeepSeek Chat)
 
 ### 1. Clone the repository
 
@@ -147,6 +147,10 @@ Create a `.env` file in the project root:
 
 ```env
 OPENROUTER_API_KEY=your_openrouter_api_key_here
+```
+or
+```env
+GOOGLE_API_KEY = your_google_api_key_here
 ```
 
 ### 5. Build the knowledge base
