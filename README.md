@@ -148,6 +148,10 @@ Create a `.env` file in the project root:
 ```env
 OPENROUTER_API_KEY=your_openrouter_api_key_here
 ```
+or
+```env
+GOOGLE_API_KEY = your_google_api_key_here
+```
 
 ### 5. Build the knowledge base
 
