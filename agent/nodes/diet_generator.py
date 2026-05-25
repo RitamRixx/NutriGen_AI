@@ -5,6 +5,7 @@ from langchain_core.messages import AIMessage
 from agent.state import AgentState
 from agent.prompts import DIET_GENERATION_PROMPT
 from ingestion.vector_store import load_vector_store
+from langsmith import traceable
 import os
 from dotenv import load_dotenv
 
@@ -19,6 +20,8 @@ llm = ChatOpenAI(
 
 VECTOR_DB = load_vector_store(persist_directory="./vector_store")
 
+
+@traceable(name='diet_generator')
 def diet_generator_node(state: AgentState) -> AgentState:
     """
     1. Loads pre-built Chroma vector store

@@ -13,7 +13,7 @@ def metrics_calculator_node(state: AgentState) -> AgentState:
     height_m = height / 100
     bmi = round(weight / (height_m ** 2), 2)
 
-    # brm
+    # bmr
 
     bmr = round((10 * weight) + (6.25 * height) - (5 * age) - 78, 2)
 

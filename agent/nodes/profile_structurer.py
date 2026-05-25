@@ -4,6 +4,7 @@ from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.prompts import ChatPromptTemplate
 from agent.state import AgentState
 from agent.prompts import PROFILE_EXTRACTION_PROMPT
+from langsmith import traceable
 import json
 import os
 from dotenv import load_dotenv
@@ -23,6 +24,7 @@ required_fields = ["weight_kg", "height_cm", "goal", "workout", "sleep_quality",
 def check_profile_completeness(profile: dict) -> bool:
     return all(profile.get(field) is not None for field in required_fields)
 
+@traceable(name="profile_structurer")
 def profile_structurer_node(state: AgentState) -> AgentState:
     """
     Parses the full conversation history and extracts/updates the structured user profile.
@@ -51,7 +53,7 @@ def profile_structurer_node(state: AgentState) -> AgentState:
 
         extracted: dict = json.loads(content)
 
-        # Merge: only overwrite fields that were actually extracted (not null)
+        # Merge: only overwrite fields that were actually extracted
         updated_profile = {**existing_profile}
         for key, value in extracted.items():
             if value is not None:

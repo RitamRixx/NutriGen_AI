@@ -3,6 +3,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from agent.state import AgentState
 from agent.prompts import QUERY_BUILDER_PROMPT
+from langsmith import traceable
 import os
 from dotenv import load_dotenv
 
@@ -16,6 +17,7 @@ llm = ChatOpenAI(
     temperature=0.7,
 )
 
+@traceable(name="query_builder")
 def query_builder_node(state: AgentState) -> AgentState:
     """
     Converts the user profile + metrics into an optimised semantic search

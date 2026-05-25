@@ -4,6 +4,7 @@ from langchain_core.messages import AIMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from agent.state import AgentState
 from agent.prompts import INPUT_COLLECTION_PROMPT
+from langsmith import traceable
 import os
 from dotenv import load_dotenv
 
@@ -16,6 +17,8 @@ llm = ChatOpenAI(
     temperature=0.7,
 )
 
+
+@traceable(name='input_collector')
 def input_collector_node(state: AgentState) -> AgentState:
     """
     Asks the user for any missing profile fields.
